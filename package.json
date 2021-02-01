@@ -1,0 +1,19 @@
+{
+  "name": "rocklen-api",
+  "version": "2.0.0",
+  "description": "An API used to help rocklen website function correctly, Made with ♥ by me!",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Volcie/rocklen-api-v2.git"
+  },
+  "author": "Volcie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Volcie/rocklen-api-v2/issues"
+  },
+  "homepage": "https://github.com/Volcie/rocklen-api-v2#readme"
+}
