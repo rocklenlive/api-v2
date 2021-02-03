@@ -17,6 +17,10 @@ const userSchema: Schema = new Schema({
   },
   avatar: String,
   email: String,
+  coins: {
+    type: Number,
+    default: 0
+  },
   daily: {
     type: Date,
     default: new Date("1980-1-1")
