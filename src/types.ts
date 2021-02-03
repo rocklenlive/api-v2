@@ -7,18 +7,6 @@ export interface JWTPayload {
   exp: number
 }
 
-export interface RocklenAPIServerConfig {
-  port: number
-  auth: {
-    discord: {
-      id: string
-      callbackURL: string
-      endpoint: string
-    }
-  }
-}
-
-
 export interface IUser extends Document {
   id: string
   username: string
