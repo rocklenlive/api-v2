@@ -3,17 +3,13 @@ import mongoose from "mongoose";
 import JWT from "jsonwebtoken";
 import passport from "passport";
 
-import { RocklenAPIServerConfig } from "../types";
-
 import Stratigies from "../stratigies";
 import Router from "../routes";
 
 class RocklenAPIServer {
   public app: Application;
   public passport: typeof passport;
-  public config: RocklenAPIServerConfig;
-  public constructor(config: RocklenAPIServerConfig) {
-    this.config = config;
+  public constructor() {
     this.app = express();
     this.passport = passport;
   };
