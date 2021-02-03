@@ -32,6 +32,8 @@ class RocklenAPIServerUtil {
         });
       }
     })(req, res, next);
+    
+    return !res.writableEnded;
   }
 };
 
