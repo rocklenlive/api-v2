@@ -2,10 +2,14 @@ import { Router } from "express";
 import passport from "passport";
 
 import User from "../../models/user.model";
+import Util from "../../core/util.core";
 
 const router = Router();
 
-router.get("/", passport.authenticate("jwt", { session: false }), (req, res) => {
+
+router.get("/", (req, res, next) => {
+  if(!Util.authJWT(req, res, next)) return;
+  
   User.find().then((users) => {
     // supplying the whole user data wouldn't be a good idea!
     let newUsers = users.map(user => ({id: user.id, username: user.username, discriminator: user.discriminator, time: user.stream.time}))
@@ -18,6 +22,6 @@ router.get("/", passport.authenticate("jwt", { session: false }), (req, res) => 
       message: "USERS_FROM_DB_FAILED"
     });
   })
-});
+})
 
 export default router;
