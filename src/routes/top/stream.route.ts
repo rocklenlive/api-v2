@@ -1,9 +1,11 @@
 import { Router } from "express";
+import passport from "passport";
+
 import User from "../../models/user.model";
 
 const router = Router();
 
-router.get("/", (req, res) => {
+router.get("/", passport.authenticate("jwt", { session: false }), (req, res) => {
   User.find().then((users) => {
     // supplying the whole user data wouldn't be a good idea!
     let newUsers = users.map(user => ({id: user.id, username: user.username, discriminator: user.discriminator, time: user.stream.time}))
