@@ -14,6 +14,7 @@ export interface IUser extends Document {
   avatar: string
   email: string | null
   daily: string
+  coins: number
   paypal: string
   stream: {
     time: number
