@@ -61,7 +61,7 @@ class RocklenAPIServer {
   }
   
   public launch(): RocklenAPIServer {
-    this.app.listen(this.config.port, () => {
+    this.app.listen(process.env.PORT, () => {
       console.log("Launched");
     });
     return this;
