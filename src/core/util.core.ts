@@ -16,7 +16,7 @@ class RocklenAPIServerUtil {
       sub: id,
       iat: Date.now()
     }, process.env.ACCESS_TOKEN_SECRET as string, {
-      expiresIn: "1w"
+      expiresIn: "3d"
     });
   }
   

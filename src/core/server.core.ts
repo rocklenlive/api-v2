@@ -78,71 +78,72 @@ class RocklenAPIServer {
         }).then(() => {
           console.log("Connected to mongo!");
           try {
-            this.influx = new Influx.InfluxDB({
-              host: process.env.INFLUX_DB_HOST,
-              database: process.env.INFLUX_DB_NAME,
-              schema: [
-                {
-                  measurement: "api_requests",
-                  fields: {
-                    path: Influx.FieldType.STRING,
-                    duration: Influx.FieldType.INTEGER,
-                    id: Influx.FieldType.STRING,
-                    token: Influx.FieldType.STRING
-                  },
-                  tags: [
-                    "ip",
-                    "method"
-                  ]
-                }
-              ]
-            });
-            // Connecting to influx!
-            new Promise<Influx.InfluxDB>(async (influxRes, influxRej) => {
-              try {
-                let influx = new Influx.InfluxDB({
-                  host: process.env.INFLUX_DB_HOST,
-                  database: process.env.INFLUX_DB_NAME,
-                  schema: [
-                    {
-                      measurement: "api_requests",
-                      fields: {
-                        path: Influx.FieldType.STRING,
-                        duration: Influx.FieldType.INTEGER,
-                        id: Influx.FieldType.STRING,
-                        token: Influx.FieldType.STRING
-                      },
-                      tags: [
-                        "ip",
-                        "method"
-                      ]
-                    }
-                  ]
-                });
-                influx.getDatabaseNames().then((dbs) => {
-                  let db = process.env.INFLUX_DB_NAME as string;
-                  if(!dbs.includes(db)) {
-                    console.log("Database wasn't found! Creating one..");
-                    influx.createDatabase(process.env.INFLUX_DB_NAME as string).then(() => {
-                      console.log("Created database");
+            // this.influx = new Influx.InfluxDB({
+            //   host: process.env.INFLUX_DB_HOST,
+            //   database: process.env.INFLUX_DB_NAME,
+            //   schema: [
+            //     {
+            //       measurement: "api_requests",
+            //       fields: {
+            //         path: Influx.FieldType.STRING,
+            //         duration: Influx.FieldType.INTEGER,
+            //         id: Influx.FieldType.STRING,
+            //         token: Influx.FieldType.STRING
+            //       },
+            //       tags: [
+            //         "ip",
+            //         "method"
+            //       ]
+            //     }
+            //   ]
+            // });
+            // // Connecting to influx!
+            // new Promise<Influx.InfluxDB>(async (influxRes, influxRej) => {
+            //   try {
+            //     let influx = new Influx.InfluxDB({
+            //       host: process.env.INFLUX_DB_HOST,
+            //       database: process.env.INFLUX_DB_NAME,
+            //       schema: [
+            //         {
+            //           measurement: "api_requests",
+            //           fields: {
+            //             path: Influx.FieldType.STRING,
+            //             duration: Influx.FieldType.INTEGER,
+            //             id: Influx.FieldType.STRING,
+            //             token: Influx.FieldType.STRING
+            //           },
+            //           tags: [
+            //             "ip",
+            //             "method"
+            //           ]
+            //         }
+            //       ]
+            //     });
+            //     influx.getDatabaseNames().then((dbs) => {
+            //       let db = process.env.INFLUX_DB_NAME as string;
+            //       if(!dbs.includes(db)) {
+            //         console.log("Database wasn't found! Creating one..");
+            //         influx.createDatabase(process.env.INFLUX_DB_NAME as string).then(() => {
+            //           console.log("Created database");
                       
-                      influxRes(influx);
-                    }).catch(influxRej)
-                    influxRes(influx);
-                  } else {
-                    influxRes(influx);
-                  }
-                }).catch(influxRej);
-              } catch(e) {
-                influxRej(e);
-              }
-            }).then((influx) => {
-              this.influx = influx;
-              console.log("Connected to influx!");
-              resolve(this);
-            }).catch((error) => {
-              return reject(error);
-            });
+            //           influxRes(influx);
+            //         }).catch(influxRej)
+            //         influxRes(influx);
+            //       } else {
+            //         influxRes(influx);
+            //       }
+            //     }).catch(influxRej);
+            //   } catch(e) {
+            //     influxRej(e);
+            //   }
+            // }).then((influx) => {
+            //   this.influx = influx;
+            //   console.log("Connected to influx!");
+            //   resolve(this);
+            // }).catch((error) => {
+            //   return reject(error);
+            // });
+            resolve(this);
           } catch (error) {
             return reject(error);
           }
