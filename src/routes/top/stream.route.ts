@@ -7,8 +7,7 @@ import Util from "../../core/util.core";
 const router = Router();
 
 
-router.get("/", (req, res, next) => {
-  if(!Util.authJWT(req, res, next)) return;
+router.get("/", Util.authJWT, (req, res, next) => {
   
   User.find().then((users) => {
     // supplying the whole user data wouldn't be a good idea!

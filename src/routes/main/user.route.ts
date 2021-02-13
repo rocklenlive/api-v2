@@ -5,8 +5,7 @@ import Util from "../../core/util.core";
 
 const router = Router();
 
-router.get("/", (req, res, next) => {
-  if(!Util.authJWT(req, res, next)) return;
+router.get("/", Util.authJWT, (req, res) => {
   
   res.send(req.user);
 })
