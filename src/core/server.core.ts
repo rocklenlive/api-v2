@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import JWT from "jsonwebtoken";
 import passport from "passport";
 import * as Influx from "influx";
+import cors from "cors";
 
 import Stratigies from "../stratigies";
 import Router from "../routes";
@@ -156,6 +157,11 @@ class RocklenAPIServer {
   
   public build(): RocklenAPIServer {
     console.log("Building!");
+    
+    this.app.use(cors({
+      origin: ["http://localhost:3000"]
+    }))
+    console.log("Used cors");
     
     this.app.use(this.passport.initialize());
     console.log("Initialized passport!");
