@@ -1,6 +1,8 @@
 # rocklen-api
 An API used to help rocklen website function correctly, Made with ♥ by [@Volcie](https://www.github.com/Volcie)!
 
+This api is not the one being hosted currently, I published this so people know how to implement token authentication to their apps with passport
+
 
 ### Features in this API:
 1. **Uses token authentication instead of session authentication with [json web tokens](https://www.jwt.io)**
